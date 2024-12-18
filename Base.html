@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Service</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9fc;
+            color: #333;
+        }
+
+        header {
+            background-color: #8D7B8F;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            margin: 40px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h3 {
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .slider {
+            margin-top: 20px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 40px;
+        }
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .car-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .car-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .car-card h4 {
+            margin: 15px 0 10px;
+        }
+
+        .car-card .price {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .rent-btn {
+            background-color: #0056ff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .rent-btn:hover {
+            background-color: #003d99;
+        }
+
+        footer {
+            margin-top: 40px;
+            background-color: #0056ff;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>CruiseInCars</h1>
+        <input type="text" placeholder="Search your dream car..." className="p-2 rounded-md mt-2" />
+        <nav>
+            <a href="#">About</a>
+            <a href="#">Community</a>
+            <a href="#">Socials</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h3>Type</h3>
+            <ul>
+                <li><a href="#">Sport</a></li>
+                <li><a href="#">SUV</a></li>
+                <li><a href="#">Luxe</a></li>
+                <li><a href="#">Sedan</a></li>
+            </ul>
+
+            <div class="slider">
+                <label for="price">Max Price: $100</label>
+                <input type="range" id="price" name="price" min="0" max="100">
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="car-grid">
+                <div class="car-card">
+                    <img src="swift.jpg" alt="Swift">
+                    <h4>Swift</h4>
+                    <p class="price">Rs 2,500.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="dezire.jpg" alt="Dezire">
+                    <h4>Dezire</h4>
+                    <p class="price">Rs 3,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="sedan.jpg" alt="Sedan">
+                    <h4>Sedan</h4>
+                    <p class="price">Rs 4,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="harrier.jpg" alt="Tata Harrier">
+                    <h4>Tata Harrier</h4>
+                    <p class="price">Rs 5,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="suv.jpg" alt="SUV">
+                    <h4>Tata Curve</h4>
+                    <p class="price">Rs 4,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="convertible.jpg" alt="Convertible">
+                    <h4>Mercedes</h4>
+                    <p class="price">Rs 20,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Nissan GT-R">
+                    <h4>Nissan GT-R</h4>
+                    <p class="price">Rs 30,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="thar.jpg" alt="Thar">
+                    <h4>Mahindra Thar</h4>
+                    <p class="price">Rs 7,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="lexus.jpg" alt="Lexus">
+                    <h4>Lexus</h4>
+                    <p class="price">Rs 0,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="rangerover.jpg" alt="Range rover">
+                    <h4>Range Rover Sports</h4>
+                    <p class="price">Rs 30,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="ferrari.jpg" alt="Ferrari">
+                    <h4>Ferrari</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="porche.jpg" alt="Porche">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="creta.jpg" alt="Hyundai Creta">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs ,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="ciaz.jpg" alt="Suzuki Ciaz">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="MG Hector">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Kia Seltos">
+                    <h4>Porche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Toyota Innova">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Toyota Fortuner">
+                    <h4></h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Honda City">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Suzuki Fronx ">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Suzuki Grand Vitara">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Suzuki Breeza">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Hyundai I20">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Hyundai I10">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Suzuki ">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Tata Nexon">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Mahindra XUV 700">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Suzuki Baleno">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Skoda Slavia">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Jeep Wrangler">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="nissan.jpg" alt="Mahindra Scorpio">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="fronx.jpg.jpg" alt="Suzuki Fronx ">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="alcazar.jpg.jpg" alt="Hyundai Alcazar">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="venue.jpg.jpg" alt="Hyundai Venue">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="exter.jpg.jpg" alt="Hyundai Exter">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="wrv.jpg.jpg" alt="Honda WR-V">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="jazz.jpg" alt="Honda Jazz">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+
+                <div class="car-card">
+                    <img src="altroz.jpg.jpg" alt="Tata Altroz">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="tiago.jpg.jpg" alt="Tata Tiago">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="safari.jpg.jpg" alt="Tata Safari">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="punch.jpg.jpg" alt="Tata Punch">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="jimmy.jpg.jpg" alt="Maruti Jimny">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="ignis.jpg.jpg" alt="Suzuki Ignis">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="urban.jpg.jpg" alt="Toyota Urban Cruiser Taisor">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="corolla.jpg.jpg" alt="Toyota Crorolla Cross">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="highlander.jpg.jpg" alt="Toyota Highlander">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="crysta.jpg.jpg" alt="Innova Crysta">
+                    <h4>NPorche</h4>
+                    <p class="price">Rs 40,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 CruiseInCars. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
