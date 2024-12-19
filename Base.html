@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Rental Service</title>
+    <script src="jquery-3.7.1.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
@@ -120,321 +121,463 @@
             text-align: center;
             padding: 20px 0;
         }
+
+        .animated-paragraph {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.5s ease-out forwards;
+            border-left: 4px solid #007acc;
+            padding-left: 15px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .responsive-text {
+            font-size: 15px;
+            /* Text size adapts to screen width */
+            color: #333;
+            transition: all 0.3s ease;
+            /* Smooth transition for hover effect */
+            padding: 10px 10px;
+            border: 2px solid transparent;
+        }
+
+        /* Hover effect */
+        .responsive-text:hover {
+            color: white;
+            background-color: #8D7B8F;
+            /* Highlight background */
+            border: 2px solid #900C3F;
+            /* Add border */
+            transform: scale(1.1);
+            /* Slightly enlarge text */
+        }
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            /* Add spacing below the search bar */
+            background-color: transparent;
+            /* Remove any specific background color */
+            height: auto;
+            /* Adjust height for better integration */
+        }
+
+        .search-input {
+            width: 900px;
+            height: 40px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 0 12px;
+            font-size: 16px;
+            transition: all 0.3s ease-in-out;
+            outline: none;
+        }
+
+        .search-input:hover {
+            border-color: #888;
+            /* Slightly darker border on hover */
+        }
+
+        /* Focus effect */
+        .search-input:focus {
+            border-color: #900C3F;
+            /* Green border on focus */
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+            /* Glow effect */
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
 <body>
     <header>
         <h1>CruiseInCars</h1>
-        <input type="text" placeholder="Search your dream car..." className="p-2 rounded-md mt-2" />
-        <nav>
-            <a href="#">About</a>
-            <a href="#">Community</a>
-            <a href="#">Socials</a>
-        </nav>
+
+
     </header>
 
     <div class="container">
         <!-- Sidebar -->
-        <div class="sidebar">
-            <h3>Type</h3>
-            <ul>
-                <li><a href="#">Sport</a></li>
-                <li><a href="#">SUV</a></li>
-                <li><a href="#">Luxe</a></li>
-                <li><a href="#">Sedan</a></li>
-            </ul>
-
-            <div class="slider">
-                <label for="price">Max Price: $100</label>
-                <input type="range" id="price" name="price" min="0" max="100">
+        <div class="slider">
+            <div class="responsive-text">
+                <h3>Type</h3>
+                <ul>
+                    <li><a href="#">Sport</a></li>
+                    <li><a href="#">SUV</a></li>
+                    <li><a href="#">Luxe</a></li>
+                    <li><a href="#">Sedan</a></li>
+                </ul>
+                <div class="slider">
+                    <label for="price">Max Price: Rs 50,000.00</label><br><br>
+                    <input type="range" id="price" name="price" min="0" max="100">
+                </div>
             </div>
         </div>
 
+
         <!-- Main Content -->
         <div class="main-content">
+            <div class="search-box">
+                <input class="search-input" type="text"
+                    placeholder="                                                                                           Search your dream car">
+            </div><br>
             <div class="car-grid">
                 <div class="car-card">
-                    <img src="swift.jpg" alt="Swift">
+                    <img src="https://imgd-ct.aeplcdn.com/664x415/n/itk98db_1738093.jpg?q=80" alt="Swift">
                     <h4>Swift</h4>
                     <p class="price">Rs 2,500.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="dezire.jpg" alt="Dezire">
+                    <img src="data:image/jpeg;base64,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"
+                        alt="Dezire">
                     <h4>Dezire</h4>
                     <p class="price">Rs 3,000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="sedan.jpg" alt="Sedan">
+                    <img src="https://imgd.aeplcdn.com/600x337/n/cw/ec/121943/verna-exterior-right-front-three-quarter-101.jpeg?isig=0&q=80"
+                        alt="Sedan">
                     <h4>Sedan</h4>
                     <p class="price">Rs 4,000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="harrier.jpg" alt="Tata Harrier">
+                    <img src="https://images.91wheels.com/assets/b_images/main/models/profile/profile1731480537.jpg?width=420&q=60?w=420&q=60"
+                        alt="Tata Harrier">
                     <h4>Tata Harrier</h4>
                     <p class="price">Rs 5,000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="suv.jpg" alt="SUV">
+                    <img src="https://imgd.aeplcdn.com/664x374/n/vsu4keb_1767507.jpg?q=80" alt="SUV">
                     <h4>Tata Curve</h4>
                     <p class="price">Rs 4,000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="convertible.jpg" alt="Convertible">
+                    <img src="https://imgd-ct.aeplcdn.com/664x374/n/cw/ec/182383/cle-cabriolet-right-front-three-quarter-2.jpeg?isig=0&q=80"
+                        alt="Convertible">
                     <h4>Mercedes</h4>
                     <p class="price">Rs 20,000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="nissan.jpg" alt="Nissan GT-R">
+                    <img src="https://imgd.aeplcdn.com/664x374/cw/ec/20361/Nissan-GTR-Right-Front-Three-Quarter-84895.jpg?v=201711021421&q=80"
+                        alt="Nissan GT-R">
                     <h4>Nissan GT-R</h4>
                     <p class="price">Rs 30,000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="thar.jpg" alt="Thar">
+                    <img src="https://img.gaadicdn.com/images/car-images/large/Mahindra/Thar/10745/1692257137907/223_Deep-Grey_333536.jpg"
+                        alt="Thar">
                     <h4>Mahindra Thar</h4>
                     <p class="price">Rs 7,000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="lexus.jpg" alt="Lexus">
+                    <img src="https://imgd.aeplcdn.com/664x374/n/m1vsisa_1467749.jpg?q=80" alt="Lexus">
                     <h4>Lexus</h4>
-                    <p class="price">Rs 0,000.00/day</p>
+                    <p class="price">Rs 14,000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="rangerover.jpg" alt="Range rover">
+                    <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/107719/range-rover-exterior-right-front-three-quarter-46.jpeg?isig=0&q=80"
+                        alt="Range rover">
                     <h4>Range Rover Sports</h4>
                     <p class="price">Rs 30,000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="ferrari.jpg" alt="Ferrari">
+                    <img src="https://imgd.aeplcdn.com/1280x720/cw/ec/21101/Ferrari-488-Right-Front-Three-Quarter-61997.jpg?wm=0&t=163306467&t=163306467&q=80"
+                        alt="Ferrari">
                     <h4>Ferrari</h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <p class="price">Rs 16,000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="porche.jpg" alt="Porche">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="creta.jpg" alt="Hyundai Creta">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs ,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="ciaz.jpg" alt="Suzuki Ciaz">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="nissan.jpg" alt="MG Hector">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="nissan.jpg" alt="Kia Seltos">
+                    <img src="https://imgd-ct.aeplcdn.com/370x231/cw/ec/39232/Porsche-992-911-Right-Front-Three-Quarter-154380.jpg?wm=0&q=80"
+                        alt="Porche">
                     <h4>Porche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <p class="price">Rs 16,000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="nissan.jpg" alt="Toyota Innova">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <img src="https://imgd.aeplcdn.com/1280x720/n/cw/ec/41564/hyundai-creta-right-front-three-quarter9.jpeg?q=80"
+                        alt="Hyundai Creta">
+                    <h4>Hyundai Creta</h4>
+                    <p class="price">Rs 3,000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="nissan.jpg" alt="Toyota Fortuner">
-                    <h4></h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <img src="https://imgd.aeplcdn.com/1056x594/n/f2r6isa_1467592.jpg?q=80" alt="Suzuki Ciaz">
+                    <h4>Suzuki Ciaz</h4>
+                    <p class="price">Rs 3,000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="nissan.jpg" alt="Honda City">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <img src="https://imgd.aeplcdn.com/1920x1080/n/cw/ec/130583/hector-exterior-right-front-three-quarter-75.jpeg?isig=0&q=80&q=80"
+                        alt="MG Hector">
+                    <h4>MG Hector</h4>
+                    <p class="price">Rs 4,500.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="nissan.jpg" alt="Suzuki Fronx ">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <img src="https://imgd.aeplcdn.com/370x208/n/cw/ec/174323/seltos-exterior-right-front-three-quarter.jpeg?isig=0"
+                        alt="Kia Seltos">
+                    <h4>Kia Seltos</h4>
+                    <p class="price">Rs 3,000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="nissan.jpg" alt="Suzuki Grand Vitara">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/115025/innova-hycross-exterior-right-front-three-quarter-73.jpeg?isig=0&q=80"
+                        alt="Toyota Innova">
+                    <h4>Toyota Innova</h4>
+                    <p class="price">Rs 3,500.00/day</p>
                     <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="nissan.jpg" alt="Suzuki Breeza">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="nissan.jpg" alt="Hyundai I20">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="nissan.jpg" alt="Hyundai I10">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="nissan.jpg" alt="Suzuki ">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="nissan.jpg" alt="Tata Nexon">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="nissan.jpg" alt="Mahindra XUV 700">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="nissan.jpg" alt="Suzuki Baleno">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="nissan.jpg" alt="Skoda Slavia">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="nissan.jpg" alt="Jeep Wrangler">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="nissan.jpg" alt="Mahindra Scorpio">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="fronx.jpg.jpg" alt="Suzuki Fronx ">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="alcazar.jpg.jpg" alt="Hyundai Alcazar">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="venue.jpg.jpg" alt="Hyundai Venue">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="exter.jpg.jpg" alt="Hyundai Exter">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="wrv.jpg.jpg" alt="Honda WR-V">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
-                <div class="car-card">
-                    <img src="jazz.jpg" alt="Honda Jazz">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
-                    <button class="rent-btn">Rent Now</button>
-                </div>
 
+                </div>
                 <div class="car-card">
-                    <img src="altroz.jpg.jpg" alt="Tata Altroz">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <img src="https://imgd.aeplcdn.com/1280x720/n/cw/ec/44709/fortuner-exterior-right-front-three-quarter-20.jpeg?isig=0&q=80"
+                        alt="Toyota Fortuner">
+                    <h4>Toyota Fortuner</h4>
+                    <p class="price">Rs 5,000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="tiago.jpg.jpg" alt="Tata Tiago">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <img src="https://imgd.aeplcdn.com/1920x1080/n/cw/ec/134287/city-exterior-right-front-three-quarter-77.jpeg?isig=0&q=80&q=80"
+                        alt="Honda City">
+                    <h4>Honda City</h4>
+                    <p class="price">Rs 3,000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="safari.jpg.jpg" alt="Tata Safari">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <img src="https://media.zigcdn.com/media/model/2023/Jan/fronx_600x400.jpg" alt="Suzuki Fronx ">
+                    <h4>Suzuki Fronx </h4>
+                    <p class="price">Rs 3,500.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="punch.jpg.jpg" alt="Tata Punch">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <img src="https://imgd-ct.aeplcdn.com/664x415/n/hrqnfab_1653831.jpg?q=80" alt="Suzuki Grand Vitara">
+                    <h4>"Suzuki Grand Vitara"</h4>
+                    <p class="price">Rs 3,5000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="jimmy.jpg.jpg" alt="Maruti Jimny">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <img src="https://5.imimg.com/data5/RC/WW/GLADMIN-71028798/brezza.png" alt="Suzuki Breeza">
+                    <h4>Suzuki Breeza</h4>
+                    <p class="price">Rs 3,5000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="ignis.jpg.jpg" alt="Suzuki Ignis">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <img src="https://www.hyundai.com/content/dam/hyundai/ww/en/images/find-a-car/pip/cars/i20-bc3/i20-bc3-highlights-designed-to-stand-out-m.jpg"
+                        alt="Hyundai I20">
+                    <h4>Hyundai I20</h4>
+                    <p class="price">Rs 4,0000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="urban.jpg.jpg" alt="Toyota Urban Cruiser Taisor">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/136183/grand-i10-nios-exterior-right-front-three-quarter-15.jpeg?isig=0&q=80 alt="
+                        alt="Hyundai I10 ">
+                    <h4>Hyundai I10</h4>
+                    <p class="price">Rs 3,5000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="corolla.jpg.jpg" alt="Toyota Crorolla Cross">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <img src="data:image/jpeg;base64,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"
+                        alt="Suzuki ritz">
+                    <h4>Suzuki ritz</h4>
+                    <p class="price">Rs 3,5000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="highlander.jpg.jpg" alt="Toyota Highlander">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <img src="https://rukminim2.flixcart.com/image/750/900/xif0q/car-media-player/v/f/r/tata-nexon-car-android-music-system-car-stereo-screen-size-9-original-imagkzkq72jytycv.jpeg?q=20&crop=false"
+                        alt="Tata Nexon">
+                    <h4>Tata Nexon</h4>
+                    <p class="price">Rs 4,5000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                    <div class="container">
+                        <p class="animated-paragraph">Developer's Choice</p>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/42355/xuv700-exterior-right-front-three-quarter-3.jpeg?isig=0&q=80"
+                        alt="Mahindra XUV 700">
+                    <h4>Mahindra XUV 700</h4>
+                    <p class="price">Rs 4,5000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
                 <div class="car-card">
-                    <img src="crysta.jpg.jpg" alt="Innova Crysta">
-                    <h4>NPorche</h4>
-                    <p class="price">Rs 40,000.00/day</p>
+                    <img src="https://imgd-ct.aeplcdn.com/664x415/n/9herrua_1559465.jpg?q=80" alt="Suzuki Baleno">
+                    <h4>Suzuki Baleno</h4>
+                    <p class="price">Rs 4,2000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://imgd.aeplcdn.com/272x153/n/cw/ec/175951/slavia-exterior-right-front-three-quarter-5.jpeg?isig=0&q=80"
+                        alt="Skoda Slavia">
+                    <h4>Skoda Slavia</h4>
+                    <p class="price">Rs 4,5000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://img2.carmax.com/assets/26421895/hero.jpg?width=400&height=300"
+                        alt="Jeep Wrangler">
+                    <h4>Jeep Wrangler</h4>
+                    <p class="price">Rs 5,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://imgd.aeplcdn.com/1920x1080/n/cw/ec/128413/scorpio-exterior-right-front-three-quarter-47.jpeg?isig=0&q=80&q=80"
+                        alt="Mahindra Scorpio">
+                    <h4>NMahindra Scorpio</h4>
+                    <p class="price">Rs 4,5000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                    <div class="container">
+                        <p class="animated-paragraph">Developer's Choice</p>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <img src="https://media.zigcdn.com/media/model/2023/Jan/fronx_600x400.jpg" alt="Suzuki Fronx ">
+                    <h4>Suzuki Fronx </h4>
+                    <p class="price">Rs 4,5000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://imgd.aeplcdn.com/1920x1080/n/cw/ec/157825/alcazar-facelift-exterior-right-front-three-quarter-10.jpeg?isig=0&q=80&q=80"
+                        alt="Hyundai Alcazar">
+                    <h4>Hyundai Alcazar</h4>
+                    <p class="price">Rs 3,5000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://development.bookyourcar.co.in/uploads/colorimage/91254_polar%20white.jpg"
+                        alt="Hyundai Venue">
+                    <h4>Hyundai Venue</h4>
+                    <p class="price">Rs 3,5000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/144851/exter-exterior-right-front-three-quarter-29.jpeg?isig=0&q=80"
+                        alt="Hyundai Exter">
+                    <h4>Hyundai Exter</h4>
+                    <p class="price">Rs 4,5000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://imgd.aeplcdn.com/1280x720/cw/ec/25833/Honda-WRV-Exterior-118956.jpg?wm=0&q=80"
+                        alt="Honda WR-V">
+                    <h4>Honda WR-V</h4>
+                    <p class="price">Rs 3,5000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://5.imimg.com/data5/PL/QG/GLADMIN-54584158/hondas-jazz-500x500.png"> alt=" Honda
+                    Jazz">
+                    <h4>Honda Jazz</h4>
+                    <p class="price">Rs 3,5000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://chybmedia.s3.ap-south-1.amazonaws.com/models/cars/altroz-16-269-66b74e30194de.jpg"
+                        alt="Tata Altroz">
+                    <h4>Tata Altroz</h4>
+                    <p class="price">Rs 3,5000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://imgd.aeplcdn.com/1920x1080/n/cw/ec/39345/tiago-exterior-right-front-three-quarter-28.jpeg?isig=0&q=80&q=80"
+                        alt="Tata Tiago">
+                    <h4>Tata Tiago</h4>
+                    <p class="price">Rs 3,5000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://imgd.aeplcdn.com/1056x594/n/ff8nqbb_1693421.jpg?q=80" alt="Tata Safari">
+                    <h4>Tata Safari</h4>
+                    <p class="price">Rs 5,0000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2023/5/307165025/QT/IP/OY/189266364/tata-punch-mist-grey-car-500x500.jpg"
+                        alt="Tata Punch">
+                    <h4>Tata Punch</h4>
+                    <p class="price">Rs 4,0000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://www.financialexpress.com/wp-content/uploads/2023/01/Jimny-Granite-Gray.jpg"
+                        alt="Maruti Jimny">
+                    <h4>Maruti Jimny</h4>
+                    <p class="price">Rs 5,5000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://avgmotors.co.in/wp-content/uploads/2022/03/Ignis-Black-876x535.png"
+                        alt="Suzuki Ignis">
+                    <h4>Suzuki Ignis</h4>
+                    <p class="price">Rs 3,5000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://imgd.aeplcdn.com/664x374/n/sd6mddb_1732099.jpg?q=80"
+                        alt="Toyota Urban Cruiser Taisor">
+                    <h4>Toyota Urban Cruiser Taisor</h4>
+                    <p class="price">Rs 7,000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                    <div class="container">
+                        <p class="animated-paragraph">Developer's Choice</p>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsHClbXNYgBCMfbno2LWb-WxxQE2BYDMaOgJnfwJ7KzTZkdYH_UteTTAxqQVhu1as4Dow&usqp=CAU"
+                        alt="Toyota Crorolla Cross">
+                    <h4>Toyota Crorolla Cross</h4>
+                    <p class="price">Rs 7,5000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                    <div class="container">
+                        <p class="animated-paragraph">Developer's Choice</p>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNabGRpRc1yjLnBx4f-EXDvddquXlqIZjHSyLpjEPYvezY_8Byr4YLs7J9N4aiLw3ToO0&usqp=CAU"
+                        alt="Toyota Highlander">
+                    <h4>Toyota Highlander</h4>
+                    <p class="price">Rs 4,5000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://cdni.autocarindia.com/Utils/ImageResizerV2.ashx?n=https://cdni.autocarindia.com/Galleries/20201015102234_2021-Toyota-Innova-Crysta-facelift-grey-studio.jpg&w=373&h=246&q=75&c=1"
+                        alt="Innova Crysta">
+                    <h4>Innova Crysta</h4>
+                    <p class="price">Rs 4,0000.00/day</p>
+                    <button class="rent-btn">Rent Now</button>
+                </div>
+                <div class="car-card">
+                    <img src="https://imgd.aeplcdn.com/642x336/n/cw/ec/154483/vellfire-exterior-right-front-three-quarter-2.jpeg?isig=0&q=80"
+                        alt="Toyota vellfire">
+                    <h4>Toyota vellfire</h4>
+                    <p class="price">Rs 4,5000.00/day</p>
                     <button class="rent-btn">Rent Now</button>
                 </div>
             </div>
@@ -442,6 +585,11 @@
     </div>
 
     <footer>
+        <nav>
+            <a href="#">About</a>
+            <a href="#">Community</a>
+            <a href="#">Socials</a>
+        </nav>
         <p>&copy; 2024 CruiseInCars. All rights reserved.</p>
     </footer>
 </body>
