@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CruiseInCars</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+  $(".animated-button").on("click", function () {
+    // Animate button scaling on click
+    $(this).addClass("clicked");
+
+    // Remove the class after animation is done
+    setTimeout(() => {
+      $(this).removeClass("clicked");
+    }, 300); // Match the CSS transition duration
+  });
+});
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        /* Vertical Navigation Bar Styles */
+        nav {
+            width: 250px;
+            height: 100vh;
+            background-color:aliceblue;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+            font-family: sans-serif;
+        }
+
+        nav a {
+            color: darkolivegreen;
+            padding: 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            background-color: lightslategray;
+        }
+
+        .dropdown {
+            font-family: sans-serif;
+            position: relative;
+            background-color:aliceblue;
+        }
+
+        .dropbtn {
+            font-family: sans-serif;
+            background-color: aliceblue;
+            color: darkolivegreen;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            padding: 16px;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: lightcyan;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color:lightcyan;
+            min-width: 200px;
+            z-index: 1;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #575757;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content {
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color:#66785F;
+            color:black;
+        }
+        /* Main content area to push content beside the nav */
+        .content {
+            margin-left: 260px;
+            padding: 20px;
+        }
+        button{
+            height:45px;
+            width:125px;
+            background-color:yellowgreen;
+            color:#4B5945;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .rent{
+            font-size:50px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .button-container {
+  text-align: center;
+}
+
+.animated-button {
+  font-size: 18px;
+  color: #fff;
+  background: #66785F;
+  padding: 30px 60px;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  width:auto;
+  white-space: nowrap;
+
+}
+
+.animated-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500%;
+  height: 500%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.animated-button:hover {
+  background: #ff5733;
+  transform: scale(1.15);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.animated-button:active::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+}
+
+    </style>
+</head>
+<body>
+<h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">CruiseInCars</h1>
+<!-- Vertical Navigation Bar -->
+<nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="about.html">🔑 How CruiseInCars works</a>
+    <a href="services.html">Services</a>
+    <a href="signup.html">LogIn</a>
+    <div class="dropdown">
+        <button class="dropbtn">Carculator</button>
+        <div class="dropdown-content">
+            <a href="suv.html">Economy</a>
+            <a href="sports.html">Sports</a>
+            <a href="luxury.html">Luxury</a>
+            <a href="e-car.html">E-cars</a>
+            <a href="convertible.html">Convertible</a>
+        </div>
+    </div>
+    <a href="contact.html">Contact support</a>
+</nav>
+
+<!-- Main Content Area -->
+<div class="content">
+    <h1>Welcome to CruiseInCars</h1>
+    <p>Explore our wide range of vehicles for rent and choose the one that suits your needs!</p>
+    <p>Click on the navigation items to explore different sections of the website.</p>
+    <br><br>
+    <p class="rent">To Rent Any Car of your Choice</p>
+    <div class="button-container">
+    <center>
+    <form action="formTrial.html" method="GET" target="_self">
+    <button class="animated-button">Click Here!!</button>
+    </form>
+    <center>
+    </div>
+</div>
+</body>
+</html>
