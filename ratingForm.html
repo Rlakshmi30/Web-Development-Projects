@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".star").on("mouseover", function () {
+        const rating = $(this).data("value");
+        $(".star").each(function (index) {
+          if (index < rating) {
+            $(this).addClass("hover");
+          } else {
+            $(this).removeClass("hover");
+          }
+        });
+      });
+
+      $(".stars").on("mouseleave", function () {
+        $(".star").removeClass("hover");
+      });
+
+      $(".star").on("click", function () {
+        const rating = $(this).data("value");
+        $("#rating-value").text(rating);
+        $(".star").removeClass("selected");
+        $(".star").each(function (index) {
+          if (index < rating) {
+            $(this).addClass("selected");
+          }
+        });
+      });
+    });
+  </script>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #1c1c1c, #3e3e3e);
+      color: #fff;
+      text-align: center;
+      padding: 50px;
+      background-color: thistle;
+    }
+
+    .rating-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1000px;
+    }
+
+    .stars {
+      display: flex;
+      position: relative;
+      transform: rotateY(0deg);
+      transition: transform 0.5s;
+    }
+
+    .stars:hover {
+      transform: rotateY(360deg);
+    }
+
+    .star {
+      font-size: 50px;
+      color: #ccc;
+      cursor: pointer;
+      transform: scale(1);
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .star:hover,
+    .star.selected {
+      color: #ffcc00;
+      transform: scale(1.2);
+    }
+
+    .star:active {
+      transform: scale(1.1);
+    }
+
+    .rating-text {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+    button{
+        display: inline-block;
+        font-family: 'Arial', sans-serif;
+        font-size: 16px;
+        padding: 12px 24px;
+        color: #fff;
+        background-color: darkcyan;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+    <h1>Rate us here</h1>
+    <p>Rate your car rental experience:</p>
+  
+    <div class="rating-container">
+      <div class="stars">
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
+      </div>
+    </div>
+  
+    <div class="rating-text">Your Rating: <span id="rating-value">0</span>/5</div>
+    <br><br>
+    <form action="thankyou.html" method="GET" target="_self">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
