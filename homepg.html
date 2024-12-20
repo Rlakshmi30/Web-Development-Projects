@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CruiseInCars</title>
-    <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -140,7 +138,12 @@
             font-size: 24px;
             text-align: center;
         }
-
+        h2,p{
+            color:#a3a375;
+        }
+        .para{
+            color:#3d3d29;
+        }
         /* Button Styling */
         .animated-button {
             padding: 10px 30px;
@@ -169,7 +172,7 @@
 
     <!-- Vertical Navigation Bar -->
     <nav>
-        <a href="index.html">🏠 Home</a>
+    <a href="index.html">🏠 Home</a>
     <a href="about.html">🔑 How CruiseInCars works</a>
     <a href="signup.html">LogIn</a>
     <a href="carculator.html">Carculator</a>
@@ -189,7 +192,7 @@
             </div>
 
         </div>
-        <p style="text-align: center;">To Rent Any Car of Your Choice</style>
+        <p class="para" style="text-align: center;">To Rent Any Car of Your Choice</style>
         </p>
         <div class="button-container" style="text-align: center;">
             <form action="formTrial.html" method="GET" style="display: inline-block;">
