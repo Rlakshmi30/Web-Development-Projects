@@ -1,203 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CruiseInCars</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-  $(".animated-button").on("click", function () {
-    // Animate button scaling on click
-    $(this).addClass("clicked");
-
-    // Remove the class after animation is done
-    setTimeout(() => {
-      $(this).removeClass("clicked");
-    }, 300); // Match the CSS transition duration
-  });
-});
+            $(".animated-button").on("click", function () {
+                $(this).addClass("clicked");
+                setTimeout(() => {
+                    $(this).removeClass("clicked");
+                }, 300);
+            });
+        });
     </script>
     <style>
+        /* Body Styling */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Georgia', serif;
+            /* Vintage serif font */
+            background: #f4efe6;
+            /* Subtle vintage background color */
+            color: #4B4B4B;
             margin: 0;
-            padding: 0;
             display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* Vertical Navigation Bar Styles */
+        /* Header Styling */
+        header {
+            width: 100%;
+            text-align: center;
+            background-color: #e8d7c5;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 36px;
+            color: #5a4233;
+            margin: 0;
+        }
+
+        /* Navigation Styles */
         nav {
-            width: 250px;
-            height: 100vh;
-            background-color:aliceblue;
+            width: 220px;
+            background: #e8d7c5;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             position: fixed;
             top: 0;
             left: 0;
-            padding-top: 20px;
-            font-family: sans-serif;
+            height: 100vh;
         }
 
-        nav a {
-            color: darkolivegreen;
-            padding: 16px;
-            text-decoration: none;
-            display: block;
-            font-size: 18px;
-        }
-
-        nav a:hover {
-            background-color: lightslategray;
-        }
-
-        .dropdown {
-            font-family: sans-serif;
-            position: relative;
-            background-color:aliceblue;
-        }
-
+        nav a,
         .dropbtn {
-            font-family: sans-serif;
-            background-color: aliceblue;
-            color: darkolivegreen;
-            border: none;
-            outline: none;
+            display: block;
+            color: #5a4233;
             font-size: 18px;
-            padding: 16px;
-            width: 100%;
-            text-align: left;
-            cursor: pointer;
+            margin: 10px 0;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
         }
 
+        nav a:hover,
         .dropdown:hover .dropbtn {
-            background-color: lightcyan;
+            background: #d4b89f;
         }
 
+        /* Dropdown Content */
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color:lightcyan;
-            min-width: 200px;
-            z-index: 1;
-            left: 0;
-        }
-
-        .dropdown-content a {
-            padding: 12px 16px;
-            text-decoration: none;
-            color: white;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #575757;
+            background-color: #d4b89f;
+            margin-top: 5px;
+            left: 20px;
         }
 
         .dropdown:hover .dropdown-content {
             display: block;
         }
-        .dropdown-content {
-            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            background-color:#66785F;
-            color:black;
+
+        /* Card Styling */
+        .card {
+            width: 90%;
+            max-width: 600px;
+            margin: 80px auto;
+            background: #e8d7c5;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            text-align: center;
         }
-        /* Main content area to push content beside the nav */
-        .content {
-            margin-left: 260px;
+
+        .image-box {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .image-box:hover img {
+            transform: scale(1.1);
+        }
+
+        .hover-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            background: rgba(0, 0, 0, 0.6);
             padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
-        button{
-            height:45px;
-            width:125px;
-            background-color:yellowgreen;
-            color:#4B5945;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+        .image-box:hover .hover-text {
+            opacity: 1;
         }
-        .rent{
-            font-size:50px;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+        .hover-text h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            text-align: center;
         }
-        .button-container {
-  text-align: center;
-}
 
-.animated-button {
-  font-size: 18px;
-  color: #fff;
-  background: #66785F;
-  padding: 30px 60px;
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease-in-out;
-  position: relative;
-  overflow: hidden;
-  width:auto;
-  white-space: nowrap;
+        /* Button Styling */
+        .animated-button {
+            padding: 10px 30px;
+            font-size: 16px;
+            color: #fff;
+            background: #5a4233;
+            border: none;
+            text-align: center;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-}
-
-.animated-button::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 500%;
-  height: 500%;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.5s ease-in-out;
-}
-
-.animated-button:hover {
-  background: #ff5733;
-  transform: scale(1.15);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
-}
-
-.animated-button:active::after {
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 0;
-}
-
+        .animated-button:hover {
+            background: #d4b89f;
+            transform: scale(1.1);
+            text-align: center;
+        }
     </style>
 </head>
-<body>
-<h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">CruiseInCars</h1>
-<!-- Vertical Navigation Bar -->
-<nav>
-    <a href="index.html">🏠 Home</a>
-    <a href="about.html">🔑 How CruiseInCars works</a>
-    <a href="services.html">Services</a>
-    <a href="signup.html">LogIn</a>
-    <div class="dropdown">
-        <button class="dropbtn">Carculator</button>
-        <div class="dropdown-content">
-            <a href="suv.html">Economy</a>
-            <a href="sports.html">Sports</a>
-            <a href="luxury.html">Luxury</a>
-            <a href="e-car.html">E-cars</a>
-            <a href="convertible.html">Convertible</a>
-        </div>
-    </div>
-    <a href="contact.html">Contact support</a>
-</nav>
 
-<!-- Main Content Area -->
-<div class="content">
-    <h1>Welcome to CruiseInCars</h1>
-    <p>Explore our wide range of vehicles for rent and choose the one that suits your needs!</p>
-    <p>Click on the navigation items to explore different sections of the website.</p>
-    <br><br>
-    <p class="rent">To Rent Any Car of your Choice</p>
-    <div class="button-container">
-    <center>
-    <form action="formTrial.html" method="GET" target="_self">
-    <button class="animated-button">Click Here!!</button>
-    </form>
-    <center>
-    </div>
-</div>
+<body>
+    <header>
+        <h1>CruiseInCars</h1>
+    </header>
+
+    <!-- Vertical Navigation Bar -->
+    <nav>
+        <a href="index.html">🏠 Home</a>
+        <a href="about.html">🔑 How CruiseInCars works</a>
+        <a href="services.html">Services</a>
+        <a href="signup.html">LogIn</a>
+        <div class="dropdown">
+            <button class="dropbtn">Carculator</button>
+            <div class="dropdown-content">
+                <a href="suv.html">Economy</a>
+                <a href="sports.html">Sports</a>
+                <a href="luxury.html">Luxury</a>
+                <a href="e-car.html">E-cars</a>
+                <a href="convertible.html">Convertible</a>
+            </div>
+        </div>
+        <a href="contact.html">Contact support</a>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main>
+        <div class="card">
+            <div class="image-box">
+                <img src="carback.jpg" alt="Car">
+                <div class="hover-text">
+                    <h2>Welcome to CruiseInCars</h2>
+                    <p>Explore our wide range of vehicles for rent and choose the one that suits your needs!</p>
+                    <p>Click on the navigation items to explore different sections of the website.</p>
+                </div>
+            </div>
+
+        </div>
+        <p style="text-align: center;">To Rent Any Car of Your Choice</style>
+        </p>
+        <div class="button-container" style="text-align: center;">
+            <form action="formTrial.html" method="GET" style="display: inline-block;">
+                <button class="animated-button">Click Here!!</button>
+            </form>
+        </div>
+    </main>
 </body>
+
 </html>
