@@ -18,7 +18,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #00b3b3;
+    background-color: #3d3d5c;
     color: white;
     padding: 20px;
 }
@@ -73,6 +73,25 @@ body {
 body{
         background: linear-gradient(to right,#80002a,#ffccdd);
     }
+    .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: #fff;
+            background: var(--link-bg);
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--link-hover-bg);
+        }
+
 
         </style>
 </head>
@@ -89,13 +108,19 @@ body{
             <p>1234 Bhubaneswar,Odisha</p>
         </div>
         <div class="contact-item">
-            <h2>Mobile Number</h2>
+            <h2><strong>Tel no:</strong></h2>
             <p>+91 234-567-890</p>
-        </div>
-        <div class="contact-item">
-            <h2>Email</h2>
+            <h2><strong>Email:</strong></h2>
             <p>cruiseincars@gmail.com</p>
+        
+        <div class="social-links">
+            <p>
+            <a href="https://www.facebook.com/Carindia/" target="_blank">Facebook</a>
+            <a href="https://x.com/CARandDRIVER" target="_blank">Twitter</a>
+            <a href="https://www.instagram.com/car/?hl=en" target="_blank">Instagram</a>
         </div>
+    </div>
     </main>
 </body>
 </html>
+
