@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three-Section Layout</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            height: 100%;
+            width: 100%;
+        }
+
+        .text-container {
+            width: 100%;
+            margin: auto;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            font-size: small;
+        }
+
+        .section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .sidebar-left {
+            background-image: url(https://i.pinimg.com/564x/07/f5/f0/07f5f01ca58b020e86957c7e541b3802.jpg);
+            background-color: #d8e097;
+
+        }
+
+        .content-section {
+            background-image: url(https://images.unsplash.com/photo-1603039548092-fff996c2441c?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FyJTIwbGlnaHRzfGVufDB8fDB8fHww);
+            background-color: #5b9670;
+            color: #fff;
+        }
+
+        .sidebar-right {
+            background-color: #d8e097;
+            background-image: url(https://img.freepik.com/premium-photo/modern-black-car-concept-black-background_926199-4191614.jpg);
+
+        }
+
+        .section:hover {
+            transform: scale(1.05);
+        }
+
+        /* Hover text */
+        .hover-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: none;
+            z-index: 10;
+        }
+
+        .section:hover .hover-text {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="section sidebar-left">
+            <h2 style="text-align: center;">Key Features</h2>
+            <div class="hover-text" style="opacity: inherit; width: 100px;">
+                <div class="text-container">
+                    <p style=" text-size-adjust:auto ; justify-content: space-between;">
+                        <strong>Extensive Vehicle Inventory:- </strong> Access a wide range of cars from various
+                        manufacturers, including sedans, SUVs, luxury vehicles, and more, categorized by size, features,
+                        and
+                        fuel type.
+                        <strong>Instant Availability Check:- </strong> Real-time updates on car availability, allowing
+
+                        to see exactly what vehicles are ready for rental at your chosen pick-up location.
+                        <strong>Intuitive Search Functionality:- </strong> Filter your search based on specific criteria
+                        like car type, budget, location, and desired rental duration.
+                        <strong>Secure Online Booking:- </strong> Book your car rental instantly with a secure payment
+                        gateway and receive instant confirmation via email.
+                        <strong>Location-Based Options:- </strong> Choose from a network of convenient pick-up and
+                        drop-off
+                        locations across your city or region.
+                        <strong>Customer Support:- </strong> Dedicated customer service available 24/7 to assist with
+                        any
+                        questions or concerns.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class=" section content-section">
+            <h2 style="color:#36454F;"><strong>CruiseInCars</strong></h2>
+
+            <div class="hover-text">
+                <div class="text-container"> Your one-stop online platform for
+                    seamless car rentals. Our user-friendly interface allows you to effortlessly browse a diverse fleet
+                    of
+                    vehicles, compare pricing, and book your ideal car for any occasion, all with real-time availability
+                    updates.
+                    </p>
+                    <p>
+                        Whether you need a compact car for city driving or a spacious SUV for family road trips, our
+                        comprehensive selection caters to every need. With convenient pickup and drop-off locations,
+                        flexible rental periods, and transparent pricing, CruiseInCars prioritizes your convenience and
+                        provides a hassle-free car rental experience
+                </div>
+            </div>
+        </div>
+        <div class="section sidebar-right">
+
+            <h2 style="text-align: center; color: 	#848884;">Benefits for Users</h2>
+
+            <div class="hover-text">
+                <div class="text-container">
+                    <p>
+                        <strong>Flexibility:- </strong> Choose the rental period that fits your needs, from short-term
+                        rentals to long-term leases.
+                        <strong>Transparency:- </strong> Clear pricing with no hidden fees, including details on
+                        insurance
+                        options and mileage allowances.
+                    <h4 style="text-align: center;">Target Audience:</h4>
+
+                    <strong>Travelers:- </strong> Seeking temporary car rentals for business trips, vacations, or
+                    airport transfers.
+                    <strong>Local Residents:- </strong> Needing a vehicle for short-term personal use like errands,
+                    special events, or car maintenance.
+                    <strong>>Individuals Without Personal Vehicles:- </strong> Looking for flexible transportation
+                    options.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
